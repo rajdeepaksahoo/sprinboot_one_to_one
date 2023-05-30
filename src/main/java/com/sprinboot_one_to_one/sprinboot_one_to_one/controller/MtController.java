@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MtController {
     @Autowired
@@ -19,5 +21,10 @@ public class MtController {
     @GetMapping(path = "/show/{qId}")
     public ResponseEntity<Question> show(@PathVariable Long qId){
         return ResponseEntity.ok(service.showQuestion(qId));
+    }
+
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Question>> showAll(){
+        return ResponseEntity.ok(service.showAll());
     }
 }
